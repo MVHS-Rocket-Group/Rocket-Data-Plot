@@ -25,7 +25,6 @@ for items in data["rows-excluded"].split(" "):
 fig.update_layout(
     title=go.layout.Title(
         text="Rocket Data",
-        xref="paper",
         x=0
     ),
     xaxis=go.layout.XAxis(
