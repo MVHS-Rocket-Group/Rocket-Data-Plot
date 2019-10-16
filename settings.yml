@@ -7,3 +7,4 @@ rows-excluded:
   -accZ
   -gyroZ
 graph-type: lines #Can be 'lines' or 'markers'
+file-name: example.csv

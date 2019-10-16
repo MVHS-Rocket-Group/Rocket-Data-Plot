@@ -3,9 +3,6 @@ import plotly.express as px
 import plotly.graph_objects as go
 import numpy as np
 import yaml
-fig = go.Figure()
-#Read the primary file.. change the name here, if you seek to use a different sample.
-df=pd.read_csv("example.csv")
 
 with open("settings.yml", 'r') as stream:
     #Handle possible YAML errors
@@ -13,6 +10,12 @@ with open("settings.yml", 'r') as stream:
         data = (yaml.safe_load(stream))
     except yaml.YAMLError as exc:
         print(exc)
+
+
+fig = go.Figure()
+#Read the primary file.. change the name here, if you seek to use a different sample.
+df=pd.read_csv(data["file-name"])
+
         
 #Add a line to the graph for each object specified in the YAML file
 for items in data["rows-excluded"].split(" "):
