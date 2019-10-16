@@ -1,0 +1,9 @@
+# Here are types of rows you can exclude:
+# elapsed time flight state, accX, accY, accZ, gyroX,
+# gyroY, gyroZ, magX, magY, magZ, baroTemp, baroPressure, events
+rows-excluded:
+  -accX
+  -accY
+  -accZ
+  -gyroZ
+graph-type: lines #Can be 'lines' or 'markers'
