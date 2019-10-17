@@ -18,13 +18,21 @@ df=pd.read_csv(data["file-name"])
 
         
 #Add a line to the graph for each object specified in the YAML file
-for items in data["rows-excluded"].split(" "):
-    print(items[1:])
-    fig.add_trace(go.Scatter(x=df["time (s)"], y=df[items[1:]],
-                        mode=data["graph-type"],
-                        name=items[1:]))
-    
-# Beautify the graph
+# Row Excluded Code-- depreciated, but still supported through YAML tag
+if (data["mode"]== "include"):
+    for items in data["rows-modified"].split(" "):
+        print(items[1:])
+        fig.add_trace(go.Scatter(x=df["time (s)"], y=df[items[1:]],
+                            mode=data["graph-type"],
+                            name=items[1:]))
+if (data["mode"]== "exclude"): # If an item is in rows modified, next iteration. Else, plot it.
+    for item in df.columns.values:
+        if (item in data["rows-modified"] or item == "time (s)"):
+            pass
+        else:
+            fig.add_trace(go.Scatter(x=df["time (s)"], y=df[item],
+                            mode=data["graph-type"],
+                            name=item))
 fig.update_layout(
     title=go.layout.Title(
         text="Rocket Data",
