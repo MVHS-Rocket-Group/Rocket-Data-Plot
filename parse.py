@@ -27,7 +27,7 @@ if (data["mode"]== "include"):
                             name=items[1:]))
 if (data["mode"]== "exclude"): # If an item is in rows modified, next iteration. Else, plot it.
     for item in df.columns.values:
-        if (item in data["rows-modified"] or item == "elapsed time (s)"):
+        if (item in data["rows-modified"] or item == "elapsed time (s)" or item== "Unnamed: 0"):
             pass
         else:
             fig.add_trace(go.Scatter(x=df["elapsed time (s)"], y=df[item],
